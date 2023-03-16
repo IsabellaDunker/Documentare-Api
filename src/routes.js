@@ -1,9 +1,21 @@
 var express = require('express')
 var router = express.Router()
+var AuthController = require('./controllers/AuthController')
 var UserController = require('./controllers/UserController')
+var verifyJWT = require('./helpers/verifyJWT');
 
-router.post('/', UserController.store)
-router.get('/', UserController.show)
-router.get('/', UserController.show)
+// rotas de login
+router.post('/login', AuthController.login)
+router.get('/logout', verifyJWT, AuthController.logout)
+router.get('/renew', verifyJWT, AuthController.renew)
+
+// rotas de usuário
+router.post('/users', UserController.store)
+router.get('/users/:id', verifyJWT, UserController.show)
+router.get('/users', verifyJWT, UserController.index)
+router.put('/users/:id', verifyJWT, UserController.update)
+router.delete('/users/:id', verifyJWT, UserController.delete)
+
+// rotas dos itens 
 
 module.exports = router;
