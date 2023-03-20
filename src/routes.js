@@ -1,6 +1,5 @@
 var express = require('express')
 var router = express.Router()
-<<<<<<< HEAD
 
 var UserController = require('./controllers/UserController')
 var ProductController = require('./controllers/ProductController')
@@ -11,7 +10,7 @@ router.get('/user', UserController.show)
 router.post('/product', ProductController.store)
 router.get('/product', ProductController.show)
 
-=======
+
 var AuthController = require('./controllers/AuthController')
 var UserController = require('./controllers/UserController')
 var verifyJWT = require('./helpers/verifyJWT');
@@ -29,6 +28,5 @@ router.put('/users/:id', verifyJWT, UserController.update)
 router.delete('/users/:id', verifyJWT, UserController.delete)
 
 // rotas dos itens 
->>>>>>> 5d82b54dccd939bbb470e32de50b613775f3cb84
 
 module.exports = router;

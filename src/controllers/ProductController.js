@@ -21,7 +21,7 @@ class ProductController {
     const product = await Product.findByPk(id);
 
     if (product == null) {
-      return res.status(400).json({ error: 'Usuario não encontrado.'});
+      return res.status(400).json({ error: 'produto não encontrado.'});
     }
 
     return res.json(product);
