@@ -2,7 +2,7 @@ const Product = require('../models/Product');
 
 class ProductController {
   static async store(req, res) {
-    const {body} = req;
+    const { body } = req;
 
     try {
       const product = await Product.create(body);

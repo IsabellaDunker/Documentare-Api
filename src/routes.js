@@ -4,13 +4,6 @@ var router = express.Router()
 var UserController = require('./controllers/UserController')
 var ProductController = require('./controllers/ProductController')
 
-router.post('/user', UserController.store)
-router.get('/user', UserController.show)
-
-router.post('/product', ProductController.store)
-router.get('/product', ProductController.show)
-
-
 var AuthController = require('./controllers/AuthController')
 var UserController = require('./controllers/UserController')
 var verifyJWT = require('./helpers/verifyJWT');
@@ -27,6 +20,11 @@ router.get('/users', verifyJWT, UserController.index)
 router.put('/users/:id', verifyJWT, UserController.update)
 router.delete('/users/:id', verifyJWT, UserController.delete)
 
-// rotas dos itens 
+// rotas dos produtos
+router.post('/products', verifyJWT, ProductController.store)
+router.get('/products/:id', verifyJWT, ProductController.show)
+router.get('/products', verifyJWT, ProductController.index)
+router.put('/products/:id', verifyJWT, ProductController.update)
+router.delete('/products/:id', verifyJWT, ProductController.delete)
 
 module.exports = router;
